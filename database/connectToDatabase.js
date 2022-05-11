@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+require('dotenv').config()
 
 const URI = "mongodb://localhost:27017/scrapeData"
 
