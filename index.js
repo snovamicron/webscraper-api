@@ -1,5 +1,5 @@
 const express = require("express")
-const cors = require("cors")
+const cors = require('cors')
 const connectToDatabase = require("./database/connectToDatabase")
 require('dotenv').config({ path: './config/config.env'})
 
@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(cors())
 connectToDatabase()
 
-app.use('/api/v1', dataRouter)
+app.use('/api/v1',dataRouter)
 
 app.listen(PORT, () => {
     console.log(`server running on http://localhost:${PORT}`)

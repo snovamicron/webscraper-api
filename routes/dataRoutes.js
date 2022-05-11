@@ -7,6 +7,6 @@ const { setData } = require("../controller/dataController")
 // middleware
 const fatchData = require("../middleware/fatchData")
 
-router.route('/data').post( fatchData, setData)
+router.route('/data').post( fatchData,setData)
 
 module.exports = router
