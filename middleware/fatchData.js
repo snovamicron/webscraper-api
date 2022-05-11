@@ -2,13 +2,15 @@ const puppeteer = require("puppeteer")
 
 
 const fatchData = async (req, res, next) => {
-    const myUserAgent = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36`
+    const myUserAgent = process.env.USER_AGENT
     let price = ''
     let title = ''
     let review = []
     const url = req.header('Product-Link')
     const domain = new URL(url)
     const domainName = domain.hostname.replace('www.', '')
+
+    // scraping data for amazon
 
     if (domainName === 'amazon.in' || domainName === 'amazon.com') {
         const browser = await puppeteer.launch()
@@ -32,6 +34,9 @@ const fatchData = async (req, res, next) => {
         await browser.close()
     }
 
+
+    // scraping data for meesho
+
     if (domainName === 'meesho.com') {
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
@@ -54,6 +59,9 @@ const fatchData = async (req, res, next) => {
         await browser.close()
     }
 
+
+    // scraping data for flipkart
+
     if (domainName === 'flipkart.com') {
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
@@ -75,6 +83,9 @@ const fatchData = async (req, res, next) => {
         })
         await browser.close()
     }
+
+
+    // scraping data for myntra
 
     if (domainName === 'myntra.com') {
         const browser = await puppeteer.launch()
